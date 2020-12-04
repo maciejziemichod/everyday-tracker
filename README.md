@@ -1,5 +1,7 @@
 # everyday-tracker
 
+[live](https://maciejziemichod.github.io/everyday-tracker/)
+
 # TODOS:
 
 - aesthetics
