@@ -1,14 +1,24 @@
 <template>
   <main>
-    <form @submit.prevent="add">
-      <input type="text" v-model="input" />
-      <button>Add</button>
-    </form>
-    <div v-for="item in items" :key="item.text">
-      <ItemComponent :item-data="item" />
+    <div class="container">
+      <div class="container">
+        <form @submit.prevent="add">
+          <input type="text" v-model="input" class="text-input" />
+          <button>Add</button>
+        </form>
+      </div>
+      <section>
+        <template v-for="item in items" :key="item.text">
+          <ItemComponent :item-data="item" />
+        </template>
+      </section>
+      <div class="container buttons">
+        <button @click="reset"><i class="fas fa-history"></i></button>
+        <button @click="deleteAllItems">
+          <i class="far fa-trash-alt"></i> <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
-    <button @click="reset">Reset</button>
-    <button @click="deleteAllItems">Delete all</button>
   </main>
 </template>
 
@@ -71,5 +81,37 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+form {
+  padding-top: 50px;
+}
+
+section {
+  padding: 50px 0;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-input {
+  width: 320px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px 12px;
+}
+
+.buttons > button:first-of-type {
+  margin-right: 15px;
 }
 </style>

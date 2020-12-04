@@ -5,7 +5,6 @@
 # TODOS:
 
 - aesthetics
-- github pages
 
 ## Project setup
 
