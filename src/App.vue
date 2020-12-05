@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <main>
     <div class="container">
       <div class="container">
@@ -13,22 +14,32 @@
         </template>
       </section>
       <div class="container buttons">
-        <button @click="reset"><i class="fas fa-history"></i></button>
-        <button @click="deleteAllItems">
+        <button @click="reset" title="This button will uncheck all the items.">
+          <i class="fas fa-history"></i>
+        </button>
+        <button
+          @click="deleteAllItems"
+          title="WARNING! This button will delete all the items."
+        >
           <i class="far fa-trash-alt"></i> <i class="far fa-trash-alt"></i>
         </button>
       </div>
+      <AppFooter />
     </div>
   </main>
 </template>
 
 <script>
 import ItemComponent from "@/components/ItemComponent.vue";
+import AppFooter from "@/components/AppFooter.vue";
+import AppHeader from "@/components/AppHeader.vue";
 
 export default {
   name: "App",
   components: {
     ItemComponent,
+    AppFooter,
+    AppHeader,
   },
   data() {
     return {
@@ -73,9 +84,13 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --light: #e7e8f7;
+  --dark: #1d1e1f;
+}
 body {
-  background-color: #1d1e1f;
-  color: #e7e8f7;
+  background-color: var(--dark);
+  color: var(--light);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -109,6 +124,10 @@ form {
 
 button {
   padding: 5px 12px;
+  color: var(--light);
+  background: none;
+  border: var(--light) 1px solid;
+  border-radius: 3px;
 }
 
 .buttons > button:first-of-type {
