@@ -17,12 +17,8 @@
         <button @click="reset" title="This button will uncheck all the items.">
           <i class="fas fa-history"></i>
         </button>
-        <button
-          @click="deleteAllItems"
-          title="WARNING! This button will delete all the items."
-        >
-          <i class="far fa-trash-alt"></i> <i class="far fa-trash-alt"></i>
-        </button>
+
+        <DeleteAllItemsButton />
       </div>
       <AppFooter />
     </div>
@@ -33,6 +29,7 @@
 import ItemComponent from "@/components/ItemComponent.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
+import DeleteAllItemsButton from "@/components/DeleteAllItemsButton.vue";
 
 export default {
   name: "App",
@@ -40,6 +37,7 @@ export default {
     ItemComponent,
     AppFooter,
     AppHeader,
+    DeleteAllItemsButton,
   },
   data() {
     return {
@@ -63,9 +61,6 @@ export default {
     },
     reset() {
       this.$store.commit("resetItems");
-    },
-    deleteAllItems() {
-      this.$store.commit("setItems", { items: [] });
     },
   },
   mounted() {
