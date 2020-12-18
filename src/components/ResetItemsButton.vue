@@ -2,20 +2,19 @@
   <span>
     <button
       @click="showConfirmBox"
-      title="WARNING! This button will delete all the items."
+      title="This button will uncheck all the items."
     >
-      <i class="far fa-trash-alt"></i> <i class="far fa-trash-alt"></i>
+      <i class="fas fa-history"></i>
     </button>
 
     <ConfirmBox
       v-if="isBoxVisible"
-      @confirm-true="deleteAllItems"
+      @confirm-true="resetItems"
       @confirm-false="hideConfirmBox"
     >
-      <template v-slot:title>Delete items</template>
+      <template v-slot:title>Reset items</template>
       <template v-slot:message
-        >Are you sure you want to delete all items? It's irreversible. Clearing
-        local storage will erase the data as well.
+        >Are you sure you want to reset all items?
       </template>
     </ConfirmBox>
   </span>
@@ -41,8 +40,8 @@ export default {
     showConfirmBox() {
       this.isBoxVisible = true;
     },
-    deleteAllItems() {
-      this.$store.commit("setItems", { items: [] });
+    resetItems() {
+      this.$store.commit("resetItems");
       this.hideConfirmBox();
     },
   },

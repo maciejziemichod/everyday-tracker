@@ -14,10 +14,7 @@
         </template>
       </section>
       <div class="container buttons">
-        <button @click="reset" title="This button will uncheck all the items.">
-          <i class="fas fa-history"></i>
-        </button>
-
+        <ResetItemsButton />
         <DeleteAllItemsButton />
       </div>
       <AppFooter />
@@ -30,6 +27,7 @@ import ItemComponent from "@/components/ItemComponent.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
 import DeleteAllItemsButton from "@/components/DeleteAllItemsButton.vue";
+import ResetItemsButton from "@/components/ResetItemsButton.vue";
 
 export default {
   name: "App",
@@ -38,6 +36,7 @@ export default {
     AppFooter,
     AppHeader,
     DeleteAllItemsButton,
+    ResetItemsButton,
   },
   data() {
     return {
@@ -58,9 +57,6 @@ export default {
     },
     saveToStorage() {
       localStorage.setItem("everyday-tracker", JSON.stringify(this.items));
-    },
-    reset() {
-      this.$store.commit("resetItems");
     },
   },
   mounted() {

@@ -44,6 +44,7 @@ export default {
   z-index: 1000;
   padding: 0 20px 20px;
   border-radius: 5px;
+  text-align: center;
 }
 
 .header {
