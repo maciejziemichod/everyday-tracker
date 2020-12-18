@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .box {
   background-color: #b60000;
-  width: 600px;
+  width: 500px;
   position: fixed;
   padding: 0;
   top: 50%;
@@ -45,6 +45,8 @@ export default {
   padding: 0 20px 20px;
   border-radius: 5px;
   text-align: center;
+  -webkit-box-shadow: 5px 5px 21px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 5px 5px 21px 0px rgba(0, 0, 0, 0.9);
 }
 
 .header {
@@ -63,7 +65,7 @@ button {
   width: 50px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 550px) {
   .box {
     width: 90%;
   }

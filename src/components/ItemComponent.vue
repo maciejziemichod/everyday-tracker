@@ -1,19 +1,31 @@
 <template>
-  <div>
+  <div class="item-container">
     <div>
       <span>
         {{ itemData.text }}
       </span>
       <input type="checkbox" v-model="isDone" />
     </div>
-    <button @click="removeItem({ item: itemData })">
+    <button @click="showMessageBox">
       <i class="far fa-trash-alt"></i>
     </button>
+
+    <ConfirmBox
+      v-if="isBoxVisible"
+      @confirm-true="deleteAllItems"
+      @confirm-false="hideMessageBox"
+    >
+      <template v-slot:title>Delete item</template>
+      <template v-slot:message
+        >Are you sure you want to delete this item? It's irreversible.
+      </template>
+    </ConfirmBox>
   </div>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
+import ConfirmBox from "@/components/ConfirmBox.vue";
 
 export default {
   name: "ItemComponent",
@@ -22,6 +34,14 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  components: {
+    ConfirmBox,
+  },
+  data() {
+    return {
+      isBoxVisible: false,
+    };
   },
   computed: {
     isDone: {
@@ -35,12 +55,22 @@ export default {
   },
   methods: {
     ...mapMutations(["setItemDone", "removeItem"]),
+    showMessageBox() {
+      this.isBoxVisible = true;
+    },
+    hideMessageBox() {
+      this.isBoxVisible = false;
+    },
+    deleteItem() {
+      removeItem({ item: this.itemData });
+      this.hideMessageBox();
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-div {
+.item-container {
   width: 400px;
   padding: 3px 0;
   display: flex;
@@ -52,7 +82,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 400px) {
-  div {
+  .item-container {
     width: auto;
   }
 }
