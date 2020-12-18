@@ -3,6 +3,7 @@
   <main>
     <div class="container">
       <div class="container">
+        <LevelCounter />
         <form @submit.prevent="add">
           <input type="text" v-model="input" class="text-input" />
           <button>Add</button>
@@ -28,6 +29,7 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
 import DeleteAllItemsButton from "@/components/DeleteAllItemsButton.vue";
 import ResetItemsButton from "@/components/ResetItemsButton.vue";
+import LevelCounter from "@/components/LevelCounter.vue";
 
 export default {
   name: "App",
@@ -37,6 +39,7 @@ export default {
     AppHeader,
     DeleteAllItemsButton,
     ResetItemsButton,
+    LevelCounter,
   },
   data() {
     return {
@@ -95,7 +98,7 @@ body {
 }
 
 form {
-  padding-top: 50px;
+  padding-top: 15px;
 }
 
 section {
