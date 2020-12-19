@@ -2,38 +2,33 @@
   <div class="level-counter">
     <div>lvl</div>
     <div>
-      <button @click="decreaseLevel"><i class="fas fa-minus"></i></button>
-      <span>{{ level }}</span>
-      <button @click="increaseLevel"><i class="fas fa-plus"></i></button>
+      <button @click="decreaseCounter"><i class="fas fa-minus"></i></button>
+      <span>{{ counter }}</span>
+      <button @click="increaseCounter"><i class="fas fa-plus"></i></button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "LevelCounter",
-  data() {
-    return {
-      level: 1,
-    };
+  computed: {
+    counter() {
+      return this.$store.state.counter;
+    },
   },
   methods: {
-    decreaseLevel() {
-      if (this.level > 1) {
-        this.level--;
-      }
-    },
-    increaseLevel() {
-      this.level++;
-    },
+    ...mapMutations(["increaseCounter", "decreaseCounter", "setCounter"]),
     saveToStorage() {
-      localStorage.setItem("everyday-tracker-level", this.level);
+      localStorage.setItem("everyday-tracker-level", this.counter);
     },
   },
   mounted() {
     const storage = localStorage.getItem("everyday-tracker-level");
     if (storage) {
-      this.level = parseInt(storage);
+      this.setCounter({ counter: parseInt(storage) });
     }
 
     window.addEventListener("beforeunload", () => {

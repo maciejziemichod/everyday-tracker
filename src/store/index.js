@@ -12,6 +12,7 @@ export default createStore({
         done: false,
       },
     ],
+    counter: 1,
   },
   mutations: {
     addItem(state, payload) {
@@ -46,6 +47,15 @@ export default createStore({
         elem.done = false;
         return elem;
       });
+    },
+    increaseCounter(state) {
+      state.counter++;
+    },
+    decreaseCounter(state) {
+      state.counter--;
+    },
+    setCounter(state, payload) {
+      state.counter = payload.counter;
     },
   },
   actions: {},

@@ -53,8 +53,15 @@ export default {
       },
     },
   },
+  watch: {
+    isDone(newValue) {
+      if (newValue) {
+        this.increaseCounter();
+      }
+    },
+  },
   methods: {
-    ...mapMutations(["setItemDone", "removeItem"]),
+    ...mapMutations(["setItemDone", "removeItem", "increaseCounter"]),
     showMessageBox() {
       this.isBoxVisible = true;
     },
