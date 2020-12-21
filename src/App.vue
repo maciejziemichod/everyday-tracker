@@ -8,6 +8,7 @@
           <input type="text" v-model="input" class="text-input" />
           <button>Add</button>
         </form>
+        <DayStreak />
       </div>
       <section>
         <template v-for="item in items" :key="item.text">
@@ -30,6 +31,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import DeleteAllItemsButton from "@/components/DeleteAllItemsButton.vue";
 import ResetItemsButton from "@/components/ResetItemsButton.vue";
 import LevelCounter from "@/components/LevelCounter.vue";
+import DayStreak from "@/components/DayStreak.vue";
 
 export default {
   name: "App",
@@ -40,6 +42,7 @@ export default {
     DeleteAllItemsButton,
     ResetItemsButton,
     LevelCounter,
+    DayStreak,
   },
   data() {
     return {
@@ -102,7 +105,7 @@ form {
 }
 
 section {
-  padding: 50px 0;
+  padding: 30px 0 50px;
 }
 
 form {

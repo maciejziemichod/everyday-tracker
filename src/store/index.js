@@ -13,6 +13,10 @@ export default createStore({
       },
     ],
     counter: 1,
+    streak: {
+      lastDay: "",
+      count: 1,
+    },
   },
   mutations: {
     addItem(state, payload) {
@@ -56,6 +60,18 @@ export default createStore({
     },
     setCounter(state, payload) {
       state.counter = payload.counter;
+    },
+    resetStreakCount(state) {
+      state.streak.count = 1;
+    },
+    increaseStreakCount(state) {
+      state.streak.count++;
+    },
+    setStreakCount(state, payload) {
+      state.streak.count = payload.count;
+    },
+    setStreakLastDay(state, payload) {
+      state.streak.lastDay = payload.lastDay;
     },
   },
   actions: {},
