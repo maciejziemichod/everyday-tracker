@@ -12,7 +12,7 @@
 
     <ConfirmBox
       v-if="isBoxVisible"
-      @confirm-true="deleteAllItems"
+      @confirm-true="deleteItem"
       @confirm-false="hideMessageBox"
     >
       <template v-slot:title>Delete item</template>
@@ -69,7 +69,7 @@ export default {
       this.isBoxVisible = false;
     },
     deleteItem() {
-      removeItem({ item: this.itemData });
+      this.removeItem({ item: this.itemData });
       this.hideMessageBox();
     },
   },
