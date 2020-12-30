@@ -66,6 +66,12 @@ export default {
     },
   },
   mounted() {
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") {
+        this.saveToStorage();
+      }
+    });
+
     const storage = localStorage.getItem("everyday-tracker");
     if (storage) {
       this.$store.commit("setItems", {
